@@ -56,20 +56,25 @@
     "all": true
   },
   "devDependencies": {
-    "@types/koa": "^2.0.44",
-    "@types/mocha": "^2.2.48",
-    "@types/koa-router": "^7.0.27",
     "@commitlint/config-angular": "^6.1.0",
-    "mocha": "^5.0.0",
-    "koa": "^2.4.1",
-    "koa-router": "^7.4.0",
-    "nyc": "^11.4.1",
-    "ts-node": "^4.1.0",
-    "tslint": "^5.9.1",
-    "typescript": "^2.7.1",
+    "@types/chai": "^4.1.2",
+    "@types/chai-http": "^3.0.3",
+    "@types/koa": "^2.0.44",
+    "@types/koa-router": "^7.0.27",
+    "@types/mocha": "^2.2.48",
+    "@types/node": "^9.4.5",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
     "commitizen": "^2.9.6",
     "commitlint": "^6.1.0",
     "coveralls": "^3.0.0",
-    "cz-conventional-changelog": "^2.1.0"
+    "cz-conventional-changelog": "^2.1.0",
+    "koa": "^2.4.1",
+    "koa-router": "^7.4.0",
+    "mocha": "^5.0.0",
+    "nyc": "^11.4.1",
+    "ts-node": "^4.1.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.1"
   }
 }

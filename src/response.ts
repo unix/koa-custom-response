@@ -2,9 +2,10 @@
 
 import * as Koa from 'koa'
 
-const ok = res => (json = {}) => {
+const ok = res => (data: object | string) => {
+  const body: object = typeof data === 'string' ? { message: data } : data
   res.status = 200
-  res.body = json
+  res.body = body
 }
 
 const emptyContent = res => () => {
