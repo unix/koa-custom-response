@@ -39,14 +39,20 @@ focus on simplifying your code logic, reduce your controller. you just need a li
 
 | Method (ctx.{method_name}) | params | action |
 | -------  | -----   | ---- |
-| ok          | (data: object | string)      | set http status to 200, return json (default: `{}`) |
-| created     | (data: object | string)      | set http status to 201, return json (default: `{}`) |
+| ok          | data: object or string      | set http status to 200, return json (default: `{}`) |
+| created     | data: object or string      | set http status to 201, return json (default: `{}`) |
 | noContent   | no params                    | set http status to 204, return null                 |
-| serverError | (data: object | string)      | set http status to 500, return json (default: `{}`) |
-| notFound    | (data: object | string)      | set http status to 404, return json (default: `{}`) |
-| forbidden   | (data: object | string)      | set http status to 403, return json (default: `{}`) |
-| badRequest  | (data: object | string)      | set http status to 400, return json (default: `{}`) |
-| catch       | (err: any | Error, data: object | string)      | set http status to 501, return error |
+| serverError | data: object or string      | set http status to 500, return json (default: `{}`) |
+| notFound    | data: object or string      | set http status to 404, return json (default: `{}`) |
+| forbidden   | data: object or string      | set http status to 403, return json (default: `{}`) |
+| badRequest  | data: object or string      | set http status to 400, return json (default: `{}`) |
+| catch       | err: Error, data: object or string      | set http status to 501, return error |
+
+if the parameter is a string, will return `{ message: str }`, like:
+
+server: `ctx.notFound('not found anything')`
+
+client response: `{ message: 'not found anything' }`
 
 ### Examples
 
