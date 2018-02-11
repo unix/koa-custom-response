@@ -20,4 +20,8 @@ export const ApiController = {
     ctx.serverError()
   },
   
+  async notFound(ctx: Koa.Context): Promise<void> {
+    ctx.notFound()
+  },
+  
 }
