@@ -1,52 +1,64 @@
-// import { Context } from 'koa'
-
 import * as Koa from 'koa'
+import { HTTP_CODE } from './code'
 
-const ok = res => (data: object | string) => {
-  const body: object = typeof data === 'string' ? { message: data } : data
-  res.status = 200
-  res.body = body
+const makeDefaultResponse = (data: object | string = {}): object =>
+  typeof data === 'string' ? { message: data } : data
+
+const ok = (ctx: Koa.Context) => (data: object | string): void => {
+  ctx.status = HTTP_CODE.OK
+  ctx.body = makeDefaultResponse(data)
 }
 
-const emptyContent = res => () => {
-  res.status = 204
-  res.body = null
+const noContent = (ctx: Koa.Context) => (): void => {
+  ctx.status = HTTP_CODE.NO_CONTENT
+  ctx.body = null
 }
 
-const serverError = res => (json = {}) => {
-  res.status = 500
-  res.body = json
+const serverError = (ctx: Koa.Context) => (data: object | string): void => {
+  ctx.status = HTTP_CODE.SERVER_ERROR
+  ctx.body = makeDefaultResponse(data)
 }
 
-const notFound = res => (json = {}) => {
-  res.status = 404
-  res.body = json
+const notFound = (ctx: Koa.Context) => (data: object | string): void => {
+  ctx.status = HTTP_CODE.NOT_FOUND
+  ctx.body = makeDefaultResponse(data)
 }
 
-const forbidden = res => (json = {}) => {
-  res.status = 403
-  res.body = json
+const forbidden = (ctx: Koa.Context) => (data: object | string): void => {
+  ctx.status = HTTP_CODE.FORBIDDEN
+  ctx.body = makeDefaultResponse(data)
 }
 
-const badRequest = res => (json = {}) => {
-  res.status = 400
-  res.body = json
+const badRequest = (ctx: Koa.Context) => (data: object | string): void => {
+  ctx.status = HTTP_CODE.BAD_REQUEST
+  ctx.body = makeDefaultResponse(data)
 }
 
-const catchFunc = res => (err: any = {}) => {
-  const isErrorStack = typeof err === 'object' && err.errors
-  const error = isErrorStack ? err : { errors: err }
-  res.status = 501
-  res.body = error
+const created = (ctx: Koa.Context) => (data: object | string): void => {
+  ctx.status = HTTP_CODE.CREATED
+  ctx.body = makeDefaultResponse(data)
+}
+
+const catchFunc = (ctx: Koa.Context) => (err: any | Error = {}, data: object | string): void => {
+  const isErrorStack = typeof err === 'object' && err instanceof Error
+  const error = isErrorStack ? {
+    errors: {
+      name: err.name || null, message: err.message || null,
+    },
+  } : { errors: String(err) }
+  const extra = makeDefaultResponse(data)
+  ctx.status = 501
+  ctx.body = Object.assign({}, error, extra)
 }
 
 export const KoaCustomResponse = () => async(ctx: Koa.Context, next) => {
-  ctx.ok = ok(ctx.response)
-  ctx.emptyContent = emptyContent(ctx.response)
+  ctx.ok = ok(ctx)
+  ctx.noContent = noContent(ctx)
   ctx.serverError = serverError(ctx)
   ctx.notFound = notFound(ctx)
   ctx.forbidden = forbidden(ctx)
   ctx.badRequest = badRequest(ctx)
+  ctx.created = created(ctx)
   ctx.catch = catchFunc(ctx)
   await next()
 }
