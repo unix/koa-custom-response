@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "declaration": true,
+    "outDir": "./dist",
+    "declarationDir": "./dist/@types",
+    "sourceMap": true,
+    "removeComments": true,
+    "noImplicitAny": false,
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "./typings"
+    ]
+  },
+  "files": ["./app.ts"],
+  "compileOnSave": false,
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
