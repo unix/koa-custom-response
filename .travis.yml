@@ -20,10 +20,10 @@ before_install: git fetch --depth=100
 
 install:
   - npm i
-  - npm run build
 
 script:
   - /bin/bash build/lint-commits.sh
+  - npm run build
 
 after_success:
   - npm run cover:hook
