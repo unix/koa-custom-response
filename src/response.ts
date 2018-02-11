@@ -39,7 +39,7 @@ const created = (ctx: Koa.Context) => (data: object | string): void => {
   ctx.body = makeDefaultResponse(data)
 }
 
-const catchFunc = (ctx: Koa.Context) => (err: any = {}, data: object | string): void => {
+const catchFunc = (ctx: Koa.Context) => (err: any | Error = {}, data: object | string): void => {
   const isErrorStack = typeof err === 'object' && err instanceof Error
   const error = isErrorStack ? {
     errors: {
