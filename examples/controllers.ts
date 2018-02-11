@@ -12,4 +12,8 @@ export const ApiController = {
     ctx.ok(message)
   },
   
+  async noContent(ctx: Koa.Context): Promise<void> {
+    ctx.noContent()
+  },
+  
 }

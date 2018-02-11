@@ -1,52 +1,57 @@
-// import { Context } from 'koa'
-
 import * as Koa from 'koa'
+import { HTTP_CODE } from './code'
 
-const ok = res => (data: object | string) => {
+const ok = (ctx: Koa.Context) => (data: object | string): void => {
   const body: object = typeof data === 'string' ? { message: data } : data
-  res.status = 200
-  res.body = body
+  ctx.status = HTTP_CODE.OK
+  ctx.body = body
 }
 
-const emptyContent = res => () => {
-  res.status = 204
-  res.body = null
+const noContent = (ctx: Koa.Context) => (): void => {
+  ctx.status = HTTP_CODE.NO_CONTENT
+  ctx.body = null
 }
 
-const serverError = res => (json = {}) => {
-  res.status = 500
-  res.body = json
+const serverError = (ctx: Koa.Context) => (json = {}): void => {
+  ctx.status = HTTP_CODE.SERVER_ERROR
+  ctx.body = json
 }
 
-const notFound = res => (json = {}) => {
-  res.status = 404
-  res.body = json
+const notFound = (ctx: Koa.Context) => (json = {}): void => {
+  ctx.status = HTTP_CODE.NOT_FOUND
+  ctx.body = json
 }
 
-const forbidden = res => (json = {}) => {
-  res.status = 403
-  res.body = json
+const forbidden = (ctx: Koa.Context) => (json = {}): void => {
+  ctx.status = HTTP_CODE.FORBIDDEN
+  ctx.body = json
 }
 
-const badRequest = res => (json = {}) => {
-  res.status = 400
-  res.body = json
+const badRequest = (ctx: Koa.Context) => (json = {}): void => {
+  ctx.status = HTTP_CODE.BAD_REQUEST
+  ctx.body = json
 }
 
-const catchFunc = res => (err: any = {}) => {
+const created = (ctx: Koa.Context) => (json = {}): void => {
+  ctx.status = HTTP_CODE.CREATED
+  ctx.body = json
+}
+
+const catchFunc = (ctx: Koa.Context) => (err: any = {}) => {
   const isErrorStack = typeof err === 'object' && err.errors
   const error = isErrorStack ? err : { errors: err }
-  res.status = 501
-  res.body = error
+  ctx.status = 501
+  ctx.body = error
 }
 
 export const KoaCustomResponse = () => async(ctx: Koa.Context, next) => {
-  ctx.ok = ok(ctx.response)
-  ctx.emptyContent = emptyContent(ctx.response)
+  ctx.ok = ok(ctx)
+  ctx.noContent = noContent(ctx)
   ctx.serverError = serverError(ctx)
   ctx.notFound = notFound(ctx)
   ctx.forbidden = forbidden(ctx)
   ctx.badRequest = badRequest(ctx)
+  ctx.created = created(ctx)
   ctx.catch = catchFunc(ctx)
   await next()
 }
