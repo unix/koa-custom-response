@@ -16,4 +16,8 @@ export const ApiController = {
     ctx.noContent()
   },
   
+  async serverError(ctx: Koa.Context): Promise<void> {
+    ctx.serverError()
+  },
+  
 }

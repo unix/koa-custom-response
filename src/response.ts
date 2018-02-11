@@ -1,10 +1,12 @@
 import * as Koa from 'koa'
 import { HTTP_CODE } from './code'
 
-const ok = (ctx: Koa.Context) => (data: object | string): void => {
-  const body: object = typeof data === 'string' ? { message: data } : data
+const makeDefaultResponse = (data: object | string): object =>
+  typeof data === 'string' ? { message: data } : data
+
+const ok = (ctx: Koa.Context) => (data: object | string = {}): void => {
   ctx.status = HTTP_CODE.OK
-  ctx.body = body
+  ctx.body = makeDefaultResponse(data)
 }
 
 const noContent = (ctx: Koa.Context) => (): void => {
@@ -12,9 +14,9 @@ const noContent = (ctx: Koa.Context) => (): void => {
   ctx.body = null
 }
 
-const serverError = (ctx: Koa.Context) => (json = {}): void => {
+const serverError = (ctx: Koa.Context) => (data: object | string = {}): void => {
   ctx.status = HTTP_CODE.SERVER_ERROR
-  ctx.body = json
+  ctx.body = makeDefaultResponse(data)
 }
 
 const notFound = (ctx: Koa.Context) => (json = {}): void => {
