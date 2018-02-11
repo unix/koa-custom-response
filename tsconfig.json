@@ -16,7 +16,7 @@
       "./typings"
     ]
   },
-  "files": ["./app.ts"],
+  "files": ["./index.ts"],
   "compileOnSave": false,
   "exclude": [
     "node_modules",

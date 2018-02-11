@@ -40,7 +40,7 @@ const catchFunc = res => (err: any = {}) => {
   res.body = error
 }
 
-export const easyResponse = () => async(ctx: Koa.Context, next) => {
+export const KoaCustomResponse = () => async(ctx: Koa.Context, next) => {
   ctx.ok = ok(ctx.response)
   ctx.emptyContent = emptyContent(ctx.response)
   ctx.serverError = serverError(ctx)
