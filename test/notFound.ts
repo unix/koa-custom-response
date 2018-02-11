@@ -11,7 +11,6 @@ describe('custom response: notFound', (): void => {
     try {
       await this.server.get('/not_found.json')
     } catch (e) {
-      console.log(e.status)
       expect(e.status).to.equal(404)
     }
   })
