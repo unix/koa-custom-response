@@ -24,9 +24,9 @@ const notFound = (ctx: Koa.Context) => (data: object | string): void => {
   ctx.body = makeDefaultResponse(data)
 }
 
-const forbidden = (ctx: Koa.Context) => (json = {}): void => {
+const forbidden = (ctx: Koa.Context) => (data: object | string): void => {
   ctx.status = HTTP_CODE.FORBIDDEN
-  ctx.body = json
+  ctx.body = makeDefaultResponse(data)
 }
 
 const badRequest = (ctx: Koa.Context) => (json = {}): void => {

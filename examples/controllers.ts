@@ -17,11 +17,32 @@ export const ApiController = {
   },
   
   async serverError(ctx: Koa.Context): Promise<void> {
-    ctx.serverError()
+    const params = ctx.query
+    ctx.serverError(params)
+  },
+  
+  async serverErrorWithMessage(ctx: Koa.Context): Promise<void> {
+    const { message } = ctx.params
+    ctx.serverError(message)
   },
   
   async notFound(ctx: Koa.Context): Promise<void> {
-    ctx.notFound()
+    const params = ctx.query
+    ctx.notFound(params)
   },
   
+  async notFoundWithMessage(ctx: Koa.Context): Promise<void> {
+    const { message } = ctx.params
+    ctx.notFound(message)
+  },
+  
+  async forbidden(ctx: Koa.Context): Promise<void> {
+    const params = ctx.query
+    ctx.forbidden(params)
+  },
+  
+  async forbiddenWithMessage(ctx: Koa.Context): Promise<void> {
+    const { message } = ctx.params
+    ctx.forbidden(message)
+  },
 }
