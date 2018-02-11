@@ -1,8 +1,11 @@
 {
   "name": "koa-custom-response",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "description": "standard and convenient KOA2 custom responses.",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "es2015": "./dist/index.js",
+  "module": "./dist/index.js",
+  "typings": "./dist/@types/index.d.ts",
   "scripts": {
     "test": "mocha",
     "cover:local": "npm run clean:cover && nyc mocha",
@@ -16,6 +19,9 @@
     "clean:build": "rm -rf dist",
     "clean:all": "npm run clean:cover & npm run clean:build"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DhyanaChina/koa-custom-response.git"
