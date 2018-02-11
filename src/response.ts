@@ -29,21 +29,26 @@ const forbidden = (ctx: Koa.Context) => (data: object | string): void => {
   ctx.body = makeDefaultResponse(data)
 }
 
-const badRequest = (ctx: Koa.Context) => (json = {}): void => {
+const badRequest = (ctx: Koa.Context) => (data: object | string): void => {
   ctx.status = HTTP_CODE.BAD_REQUEST
-  ctx.body = json
+  ctx.body = makeDefaultResponse(data)
 }
 
-const created = (ctx: Koa.Context) => (json = {}): void => {
+const created = (ctx: Koa.Context) => (data: object | string): void => {
   ctx.status = HTTP_CODE.CREATED
-  ctx.body = json
+  ctx.body = makeDefaultResponse(data)
 }
 
-const catchFunc = (ctx: Koa.Context) => (err: any = {}) => {
-  const isErrorStack = typeof err === 'object' && err.errors
-  const error = isErrorStack ? err : { errors: err }
+const catchFunc = (ctx: Koa.Context) => (err: any = {}, data: object | string): void => {
+  const isErrorStack = typeof err === 'object' && err instanceof Error
+  const error = isErrorStack ? {
+    errors: {
+      name: err.name || null, message: err.message || null,
+    }
+  } : { errors: String(err) }
+  const extra = makeDefaultResponse(data)
   ctx.status = 501
-  ctx.body = error
+  ctx.body = Object.assign({}, error, extra)
 }
 
 export const KoaCustomResponse = () => async(ctx: Koa.Context, next) => {

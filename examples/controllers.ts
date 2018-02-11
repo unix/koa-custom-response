@@ -45,4 +45,34 @@ export const ApiController = {
     const { message } = ctx.params
     ctx.forbidden(message)
   },
+  
+  async badRequest(ctx: Koa.Context): Promise<void> {
+    const params = ctx.query
+    ctx.badRequest(params)
+  },
+  
+  async badRequestWithMessage(ctx: Koa.Context): Promise<void> {
+    const { message } = ctx.params
+    ctx.badRequest(message)
+  },
+  
+  async created(ctx: Koa.Context): Promise<void> {
+    const params = ctx.query
+    ctx.created(params)
+  },
+  
+  async createdWithMessage(ctx: Koa.Context): Promise<void> {
+    const { message } = ctx.params
+    ctx.created(message)
+  },
+  
+  async catch(ctx: Koa.Context): Promise<void> {
+    const params = ctx.query
+    try {
+      const message: any = { b: 2 }
+      console.log(message.a.b)
+    } catch (e) {
+      ctx.catch(e, params)
+    }
+  },
 }

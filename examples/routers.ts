@@ -14,6 +14,14 @@ const routers = router
   
   .get('/forbidden.json', ApiController.forbidden)
   .get('/forbidden/:message', ApiController.forbiddenWithMessage)
+  
+  .get('/bad_request.json', ApiController.badRequest)
+  .get('/bad_request/:message', ApiController.badRequestWithMessage)
+  
+  .get('/created.json', ApiController.created)
+  .get('/created/:message', ApiController.createdWithMessage)
+  
+  .get('/catch_error.json', ApiController.catch)
 
 export {
   routers,
