@@ -2,9 +2,7 @@
   "compilerOptions": {
     "target": "es2015",
     "module": "commonjs",
-    "declaration": true,
     "outDir": "./dist",
-    "declarationDir": "./dist/@types",
     "sourceMap": true,
     "removeComments": true,
     "noImplicitAny": false,
