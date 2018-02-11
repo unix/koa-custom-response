@@ -44,7 +44,7 @@ const catchFunc = (ctx: Koa.Context) => (err: any = {}, data: object | string): 
   const error = isErrorStack ? {
     errors: {
       name: err.name || null, message: err.message || null,
-    }
+    },
   } : { errors: String(err) }
   const extra = makeDefaultResponse(data)
   ctx.status = 501
