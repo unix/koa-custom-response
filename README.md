@@ -41,7 +41,7 @@ focus on simplifying your code logic, reduce your controller. you just need a li
 | -------  | -----   | ---- |
 | ok          | (data: object | string)      | set http status to 200, return json (default: `{}`) |
 | created     | (data: object | string)      | set http status to 201, return json (default: `{}`) |
-| noContent   | no params                    | set http status to 204, return null
+| noContent   | no params                    | set http status to 204, return null                 |
 | serverError | (data: object | string)      | set http status to 500, return json (default: `{}`) |
 | notFound    | (data: object | string)      | set http status to 404, return json (default: `{}`) |
 | forbidden   | (data: object | string)      | set http status to 403, return json (default: `{}`) |
