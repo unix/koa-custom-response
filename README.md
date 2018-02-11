@@ -1,4 +1,8 @@
-### koa-custom-response
+## koa-custom-response
+[![Coverage Status](https://coveralls.io/repos/github/DhyanaChina/koa-custom-response/badge.svg?branch=master)](https://coveralls.io/github/DhyanaChina/koa-custom-response?branch=master)
+![travis-ci](https://travis-ci.org/DhyanaChina/koa-custom-response.svg?branch=master)
+![MIT](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)
+
 standard and convenient custom responses.
 focus on simplifying your code logic, reduce your controller. you just need a line of code to return the standard data and status code.
 
