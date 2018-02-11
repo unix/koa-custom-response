@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./dist",
+    "declarationDir": "./dist/@types",
+    "sourceMap": true,
+    "removeComments": true,
+    "noImplicitAny": false,
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "./typings"
+    ]
+  },
+  "files": ["./index.ts"],
+  "compileOnSave": false,
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
