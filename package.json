@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "cover:local": "nyc mocha;open coverage/lcov-report/index.html",
-    "cover:hook": "nyc mocha;cat ./coverage/lcov.info | coveralls",
+    "cover:local": "npm run clean:cover && nyc mocha",
+    "cover:hook": "npm run clean:cover && (nyc --reporter=text-lcov mocha | coveralls)",
     "commit:hook": "commitlint --from origin/master --to HEAD",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "start": "export NODE_ENV=development; ts-node examples/app.ts",
@@ -44,11 +44,10 @@
       ".js"
     ],
     "require": [
-      "./node_modules/ts-node"
+      "ts-node"
     ],
     "reporter": [
-      "lcov",
-      "text",
+      "text-lcov",
       "text-summary"
     ],
     "cache": false,
