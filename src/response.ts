@@ -4,7 +4,7 @@ import { HTTP_CODE } from './code'
 const makeDefaultResponse = (data: object | string = {}): object =>
   typeof data === 'string' ? { message: data } : data
 
-const ok = (ctx: Koa.Context) => (data: object | string): void => {
+const ok = (ctx: Koa.Context) => (data?: object | string): void => {
   ctx.status = HTTP_CODE.OK
   ctx.body = makeDefaultResponse(data)
 }
@@ -14,32 +14,32 @@ const noContent = (ctx: Koa.Context) => (): void => {
   ctx.body = null
 }
 
-const serverError = (ctx: Koa.Context) => (data: object | string): void => {
+const serverError = (ctx: Koa.Context) => (data?: object | string): void => {
   ctx.status = HTTP_CODE.SERVER_ERROR
   ctx.body = makeDefaultResponse(data)
 }
 
-const notFound = (ctx: Koa.Context) => (data: object | string): void => {
+const notFound = (ctx: Koa.Context) => (data?: object | string): void => {
   ctx.status = HTTP_CODE.NOT_FOUND
   ctx.body = makeDefaultResponse(data)
 }
 
-const forbidden = (ctx: Koa.Context) => (data: object | string): void => {
+const forbidden = (ctx: Koa.Context) => (data?: object | string): void => {
   ctx.status = HTTP_CODE.FORBIDDEN
   ctx.body = makeDefaultResponse(data)
 }
 
-const badRequest = (ctx: Koa.Context) => (data: object | string): void => {
+const badRequest = (ctx: Koa.Context) => (data?: object | string): void => {
   ctx.status = HTTP_CODE.BAD_REQUEST
   ctx.body = makeDefaultResponse(data)
 }
 
-const created = (ctx: Koa.Context) => (data: object | string): void => {
+const created = (ctx: Koa.Context) => (data?: object | string): void => {
   ctx.status = HTTP_CODE.CREATED
   ctx.body = makeDefaultResponse(data)
 }
 
-const catchFunc = (ctx: Koa.Context) => (err: any | Error = {}, data: object | string): void => {
+const catchFunc = (ctx: Koa.Context) => (err: any | Error = {}, data?: object | string): void => {
   const isErrorStack = typeof err === 'object' && err instanceof Error
   const error = isErrorStack ? {
     errors: {
