@@ -14,3 +14,7 @@ declare module 'koa' {
   }
   
 }
+
+declare function KoaCustomResponse(): Koa.Middleware
+declare namespace KoaCustomResponse { }
+export = KoaCustomResponse
