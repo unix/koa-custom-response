@@ -10,7 +10,11 @@ declare module 'koa' {
     notFound: (data?: object | string) => void
     forbidden: (data?: object | string) => void
     badRequest: (data?: object | string) => void
-    catch: (err: any | Error = {}, data?: object | string) => void
+    catch: (err?: any | Error, data?: object | string) => void
   }
   
 }
+
+declare function KoaCustomResponse(): Koa.Middleware
+declare namespace KoaCustomResponse { }
+export = KoaCustomResponse
