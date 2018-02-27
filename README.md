@@ -51,6 +51,7 @@ focus on simplifying your code logic, reduce your controller. you just need a li
 | forbidden   | data: object or string      | set http status to 403, return json (default: `{}`) |
 | badRequest  | data: object or string      | set http status to 400, return json (default: `{}`) |
 | catch       | err: Error, data: object or string      | set http status to 501, return error |
+| reply       | code: number, data: object or string    | set http status with code |
 
 if the parameter is a string, will return `{ message: str }`, like:
 
