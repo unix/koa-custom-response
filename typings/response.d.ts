@@ -11,6 +11,7 @@ declare module 'koa' {
     forbidden: (data?: object | string) => void
     badRequest: (data?: object | string) => void
     catch: (err?: any | Error, data?: object | string) => void
+    reply: (code: number, data?: object | string) => void
   }
   
 }
