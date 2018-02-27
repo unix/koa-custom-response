@@ -22,6 +22,9 @@ const routers = router
   .get('/created/:message', ApiController.createdWithMessage)
   
   .get('/catch_error.json', ApiController.catch)
+  
+  .get('/reply.json', ApiController.reply)
+  .get('/reply/:message', ApiController.replyWithMessage)
 
 export {
   routers,

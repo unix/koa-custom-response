@@ -75,4 +75,13 @@ export const ApiController = {
       ctx.catch(e, params)
     }
   },
+  
+  async reply(ctx: Koa.Context): Promise<void> {
+    ctx.reply(200, { code: 100 })
+  },
+  
+  async replyWithMessage(ctx: Koa.Context): Promise<void> {
+    const { message } = ctx.params
+    ctx.reply(200, message)
+  },
 }
