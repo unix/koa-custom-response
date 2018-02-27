@@ -51,6 +51,11 @@ const catchFunc = (ctx: Koa.Context) => (err: any | Error = {}, data?: object | 
   ctx.body = Object.assign({}, error, extra)
 }
 
+const reply = (ctx: Koa.Context) => (code: number, data?: object | string): void => {
+  ctx.status = code
+  ctx.body = makeDefaultResponse(data)
+}
+
 export const KoaCustomResponse = () => async(ctx: Koa.Context, next) => {
   ctx.ok = ok(ctx)
   ctx.noContent = noContent(ctx)
@@ -60,6 +65,7 @@ export const KoaCustomResponse = () => async(ctx: Koa.Context, next) => {
   ctx.badRequest = badRequest(ctx)
   ctx.created = created(ctx)
   ctx.catch = catchFunc(ctx)
+  ctx.reply = reply(ctx)
   await next()
 }
 
