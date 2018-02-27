@@ -7,8 +7,8 @@
   "typings": "./typings/response.d.ts",
   "scripts": {
     "test": "mocha",
-    "cover:local": "npm run clean:cover && nyc mocha",
-    "cover:hook": "npm run clean:cover && (nyc --reporter=text-lcov mocha | coveralls)",
+    "cover:local": "nyc mocha;open coverage/lcov-report/index.html",
+    "cover:hook": "nyc mocha;cat ./coverage/lcov.info | coveralls",
     "commit:hook": "commitlint --from origin/master --to HEAD",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "start": "export NODE_ENV=development; ts-node examples/app.ts",
@@ -53,7 +53,8 @@
       "ts-node"
     ],
     "reporter": [
-      "text-lcov",
+      "lcov",
+      "text",
       "text-summary"
     ],
     "cache": false,
