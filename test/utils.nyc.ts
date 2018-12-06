@@ -13,7 +13,7 @@ const closeServer = (app: Server): void => {
   timer = global.setTimeout(() => {
     app.close()
     clearTimeout(timer)
-  }, 100)
+  }, 5000)
 }
 
 export const app = async(): Promise<ChaiHttp.Agent> => {
