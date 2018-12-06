@@ -2,7 +2,7 @@ import * as Koa from 'koa'
 
 declare module 'koa' {
   
-  interface Context extends Koa.Context {
+  interface Context {
     ok: (data?: object | string) => void
     created: (data?: object | string) => void
     noContent: () => void
@@ -18,4 +18,4 @@ declare module 'koa' {
 
 declare function KoaCustomResponse(): Koa.Middleware
 declare namespace KoaCustomResponse { }
-export = KoaCustomResponse
+export { KoaCustomResponse }

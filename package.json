@@ -1,6 +1,6 @@
 {
   "name": "koa-custom-response",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "standard and convenient KOA2 custom responses.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -8,7 +8,7 @@
   "scripts": {
     "test": "nyc mocha",
     "cover:local": "nyc mocha; open coverage/lcov-report/index.html",
-    "cover:hook": "nyc mocha; cat ./coverage/lcov.info | coveralls; exit",
+    "cover:hook": "npm run clean:cover && nyc mocha | coveralls",
     "commit:hook": "commitlint --from origin/master --to HEAD",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "start": "export NODE_ENV=development; ts-node examples/app.ts",
@@ -53,8 +53,7 @@
       "./node_modules/ts-node"
     ],
     "reporter": [
-      "lcov",
-      "text",
+      "text-lcov",
       "text-summary"
     ],
     "cache": false,
