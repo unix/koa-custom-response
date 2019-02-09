@@ -24,6 +24,7 @@ install:
 script:
   - /bin/bash build/lint-commits.sh
   - npm run build
+  - npm test
 
 after_success:
-  - npm run cover:hook
+  - "cat coverage/lcov.info | ./node_modules/.bin/coveralls"
