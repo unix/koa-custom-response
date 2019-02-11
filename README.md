@@ -60,4 +60,5 @@ server: `ctx.notFound('not found anything')`
 client response: `{ message: 'not found anything' }`
 
 ### Examples
+[example](https://github.com/DhyanaChina/koa-custom-response/tree/master/examples)
 
