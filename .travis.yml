@@ -10,7 +10,7 @@ notifications:
     on_success: never
 
 node_js:
-  - 8.6.0
+  - 10.0.0
 
 branches:
   only:
@@ -22,8 +22,9 @@ install:
   - npm i
 
 script:
-  - /bin/bash build/lint-commits.sh
+  - commitlint-travis
   - npm run build
+  - npm test
 
 after_success:
-  - npm run cover:hook
+  - "cat coverage/lcov.info | ./node_modules/.bin/coveralls"
