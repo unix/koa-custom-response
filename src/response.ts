@@ -39,13 +39,13 @@ const created = (ctx: Koa.Context) => (data?: object | string): void => {
   ctx.body = makeDefaultResponse(data)
 }
 
-const catchFunc = (ctx: Koa.Context) => (err: any | Error = {}, data?: object | string): void => {
+const catchFunc = (ctx: Koa.Context) => (err: any | Error = '', data?: object | string): void => {
   const isErrorStack = typeof err === 'object' && err instanceof Error
   const error = isErrorStack ? {
     errors: {
-      name: err.name || null, message: err.message || null,
+      name: err.name, message: err.message,
     },
-  } : { errors: String(err) }
+  } : { errors: !err ? err : `${err}` }
   const extra = makeDefaultResponse(data)
   ctx.status = 501
   ctx.body = Object.assign({}, error, extra)
