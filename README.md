@@ -6,6 +6,8 @@
 standard and convenient custom responses.
 focus on simplifying your code logic, reduce your controller. you just need a line of code to return the standard data and status code.
 
+<br>
+
 #### Usage
 
 - install: `npm i --save koa-custom-response`
@@ -39,6 +41,8 @@ focus on simplifying your code logic, reduce your controller. you just need a li
   }
   ```
 
+<br>
+
 ### API
 
 | Method (ctx.{method_name}) | params | action |
@@ -59,5 +63,12 @@ server: `ctx.notFound('not found anything')`
 
 client response: `{ message: 'not found anything' }`
 
-### Examples
+<br>
 
+### Examples
+[example](https://github.com/DhyanaChina/koa-custom-response/tree/master/examples)
+
+<br>
+
+## LICENSE
+[MIT](LICENSE)

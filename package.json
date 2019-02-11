@@ -1,22 +1,20 @@
 {
   "name": "koa-custom-response",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "standard and convenient KOA2 custom responses.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "typings": "./typings/response.d.ts",
   "scripts": {
     "test": "nyc mocha",
-    "cover:local": "nyc mocha; open coverage/lcov-report/index.html",
-    "cover:hook": "npm run clean:cover && nyc mocha | coveralls",
-    "commit:hook": "commitlint --from origin/master --to HEAD",
+    "cover": "nyc mocha; open coverage/lcov-report/index.html",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "start": "export NODE_ENV=development; ts-node examples/app.ts",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "build": "npm run lint && tsc",
+    "build": "npm run clean && npm run lint && tsc",
+    "clean": "npm run clean:cover & npm run clean:build",
     "clean:cover": "rm -rf coverage .nyc_output",
-    "clean:build": "rm -rf dist",
-    "clean:all": "npm run clean:cover & npm run clean:build"
+    "clean:build": "rm -rf dist"
   },
   "files": [
     "dist",

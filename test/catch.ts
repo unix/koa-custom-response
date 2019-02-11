@@ -40,5 +40,41 @@ describe('custom response: catch', (): void => {
         .that.is.a('string').equal(message)
     }
   })
-  
+
+  it('should return error with custom message', async(): Promise<void> => {
+    const message: string = 'ohhhh... server error'
+    try {
+      await this.server.get(`/catch_error/${message}`)
+    } catch (e) {
+      expect(e.status).to.equal(501)
+      expect(e.response.body).an('object')
+        .to.have.property('errors')
+        .that.is.a('string').equal(message)
+    }
+  })
+
+  it('should return a null error', async(): Promise<void> => {
+    try {
+      await this.server.get(`/catch_null.json`)
+    } catch (e) {
+      expect(e.status).to.equal(501)
+      expect(e.response.body).an('object')
+        .to.have.property('errors')
+        .that.is.a('null')
+    }
+  })
+
+  it('should return a empty string when catch undefined error', async(): Promise<void> => {
+    try {
+      await this.server.get(`/catch_undefined.json`)
+    } catch (e) {
+      expect(e.status).to.equal(501)
+      expect(e.response.body).an('object')
+        .to.have.property('errors')
+        .that.is.a('string')
+        .equal('')
+    }
+  })
+
+
 })

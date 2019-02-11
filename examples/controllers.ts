@@ -25,7 +25,7 @@ export const ApiController = {
     const { message } = ctx.params
     ctx.serverError(message)
   },
-  
+
   async notFound(ctx: Koa.Context): Promise<void> {
     const params = ctx.query
     ctx.notFound(params)
@@ -74,6 +74,19 @@ export const ApiController = {
     } catch (e) {
       ctx.catch(e, params)
     }
+  },
+
+  async catchWithMessage(ctx: Koa.Context): Promise<void> {
+    const { message } = ctx.params
+    ctx.catch(message)
+  },
+
+  async catchWithNull(ctx: Koa.Context): Promise<void> {
+    ctx.catch(null, '')
+  },
+
+  async catchWithUndefined(ctx: Koa.Context): Promise<void> {
+    ctx.catch(undefined, '')
   },
   
   async reply(ctx: Koa.Context): Promise<void> {

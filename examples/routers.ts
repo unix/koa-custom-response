@@ -20,9 +20,12 @@ const routers = router
   
   .get('/created.json', ApiController.created)
   .get('/created/:message', ApiController.createdWithMessage)
-  
+
   .get('/catch_error.json', ApiController.catch)
-  
+  .get('/catch_error/:message', ApiController.catchWithMessage)
+  .get('/catch_null.json', ApiController.catchWithNull)
+  .get('/catch_undefined.json', ApiController.catchWithUndefined)
+
   .get('/reply.json', ApiController.reply)
   .get('/reply/:message', ApiController.replyWithMessage)
 
