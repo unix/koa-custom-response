@@ -1,6 +1,6 @@
 {
   "name": "koa-custom-response",
-  "version": "0.3.3",
+  "version": "0.3.4-canary.0",
   "description": "standard and convenient KOA2 custom responses.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
