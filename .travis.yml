@@ -16,15 +16,12 @@ branches:
   only:
     - master
 
-before_install: git fetch --depth=100
-
 install:
-  - npm i
+  - yarn
 
 script:
-  - commitlint-travis
-  - npm run build
-  - npm test
+  - yarn build
+  - yarn test
 
 after_success:
   - "cat coverage/lcov.info | ./node_modules/.bin/coveralls"
