@@ -1,6 +1,6 @@
 ## koa-custom-response
-[![Coverage Status](https://coveralls.io/repos/github/DhyanaChina/koa-custom-response/badge.svg?branch=master)](https://coveralls.io/github/DhyanaChina/koa-custom-response?branch=master)
-![travis-ci](https://travis-ci.org/DhyanaChina/koa-custom-response.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/unix/koa-custom-response/badge.svg?branch=master)](https://coveralls.io/github/DhyanaChina/koa-custom-response?branch=master)
+![travis-ci](https://travis-ci.org/unix/koa-custom-response.svg?branch=master)
 ![MIT](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)
 
 standard and convenient custom responses.
@@ -66,7 +66,7 @@ client response: `{ message: 'not found anything' }`
 <br>
 
 ### Examples
-[example](https://github.com/DhyanaChina/koa-custom-response/tree/master/examples)
+[example](https://github.com/unix/koa-custom-response/tree/master/examples)
 
 <br>
 

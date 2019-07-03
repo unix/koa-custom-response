@@ -22,14 +22,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DhyanaChina/koa-custom-response.git"
+    "url": "git+https://github.com/unix/koa-custom-response.git"
   },
-  "author": "WittBulter(nanazuimeng123@gmail.com)",
+  "author": "unix(lambdas.dev@gmail.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DhyanaChina/koa-custom-response/issues"
+    "url": "https://github.com/unix/koa-custom-response/issues"
   },
-  "homepage": "https://github.com/DhyanaChina/koa-custom-response#readme",
+  "homepage": "https://github.com/unix/koa-custom-response#readme",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
